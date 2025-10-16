@@ -1,0 +1,66 @@
+// src/components/Button/Button.scss
+
+@use '../../styles/variables';
+
+.btn {
+  padding: variables.$spacing-unit * 1.5 variables.$spacing-unit * 3;
+  border: 1px solid transparent;
+  border-radius: variables.$border-radius;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none; 
+  display: inline-block; 
+
+  // VARYANTLAR
+  &--primary {
+    background-color: variables.$color-primary;
+    color: var(--color-card-bg); // Tema rengi
+    border-color: variables.$color-primary;
+    
+    // RGB değişkeni ile hafif gölge (Kurumsal görünüm için)
+    box-shadow: 0 4px 6px rgba(var(--color-primary-rgb), 0.2); 
+
+    &:hover {
+      // Güvenli Hover Efekti: Rengi hafif açar
+      background-color: var(--color-primary);
+      filter: brightness(1.1); 
+      box-shadow: 0 6px 8px rgba(var(--color-primary-rgb), 0.3); // Gölgelendirmeyi artırır
+    }
+  }
+
+  &--secondary {
+    background-color: variables.$color-secondary;
+    color: var(--color-card-bg);
+    border-color: variables.$color-secondary;
+
+    &:hover {
+      // Güvenli Hover Efekti: Rengi hafif açar
+      background-color: var(--color-secondary);
+      filter: brightness(1.1);
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    color: variables.$color-primary;
+    border-color: variables.$color-primary;
+    
+    &:hover {
+      // Hafif birincil renk tonu ile dolgu efekti
+      background-color: rgba(var(--color-primary-rgb), 0.1); 
+    }
+  }
+  
+  // BOYUTLAR
+  &--small {
+    font-size: 0.8rem;
+    padding: variables.$spacing-unit variables.$spacing-unit * 2;
+  }
+  
+  &--large {
+    font-size: 1.1rem;
+    padding: variables.$spacing-unit * 2 variables.$spacing-unit * 4;
+  }
+}

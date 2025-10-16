@@ -1,0 +1,42 @@
+@use '../../styles/variables';
+
+.input-group {
+    margin-bottom: variables.$spacing-unit * 3;
+    display: flex;
+    flex-direction: column;
+
+    &__label {
+        margin-bottom: variables.$spacing-unit;
+        font-weight: 600;
+        color: var(--color-text);
+    }
+
+    &__input {
+        padding: variables.$spacing-unit * 1.5;
+        border: 1px solid var(--color-border);
+        border-radius: variables.$border-radius;
+        background-color: var(--color-card-bg);
+        color: var(--color-text);
+        transition: border-color 0.2s, box-shadow 0.2s;
+
+        &:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb, 0, 123, 255), 0.3); // Varsayılan renk için RGB kullanılması gerekebilir
+        }
+    }
+
+    &--error {
+        .input-group__input {
+            border-color: var(--color-error); // Hata rengini uygula
+        }
+        .input-group__label, .input-group__error-message {
+            color: var(--color-error);
+        }
+    }
+    
+    &__error-message {
+        margin-top: variables.$spacing-unit;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,85 @@
+// src/components/Card/Card.scss
+
+@use '../../styles/variables';
+
+.card {
+    // LAYOUT DÜZELTMESİ: İçeriği dikey olarak düzenle ve alt elemanı (Düğme) alta sabitle
+    display: flex; 
+    flex-direction: column;
+    
+    background-color: var(--color-card-bg); 
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: variables.$border-radius * 2;
+    padding: variables.$spacing-unit * 3;
+    box-shadow: 0 variables.$spacing-unit variables.$spacing-unit * 2 var(--color-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+    height: 100%; // Grid içindeki elemanların yüksekliğini eşitlemek için
+
+    &:hover {
+        transform: translateY(-5px); // Hafif görsel hareket (hover efekti)
+        box-shadow: 0 variables.$spacing-unit * 2 variables.$spacing-unit * 3 var(--color-shadow);
+        border-color: var(--color-primary); // <-- Hover'da Birincil Renk Değişimi
+    }
+    
+    &__title {
+        color: var(--color-primary);
+        margin-top: 0;
+        margin-bottom: variables.$spacing-unit * 2;
+        font-size: 1.5rem;
+        
+        text-align: center; /* <-- Başlık metnini ortala */
+
+        @include variables.screen-sm-max {
+            font-size: 1.3rem;
+        }
+    }
+
+    /* NORMAL ÖZELLİK KARTI İÇERİĞİ */
+    &__content {
+        line-height: 1.7;
+        flex-grow: 1; 
+        margin-bottom: variables.$spacing-unit * 3; 
+        text-align: center; /* <-- Açıklama metnini ortala */
+    }
+    
+    /* Kart içindeki Button bileşeninin en alta sabitlenmesini sağlar */
+    .btn {
+        margin-top: auto; 
+    }
+}
+
+// FİYATLANDIRMA KARTI ÖZELLEŞTİRMELERİ (Profesyonel Plan Vurgusu)
+.card--primary-pricing {
+    border: 2px solid var(--color-primary); // Vurgulu sınır
+    transform: scale(1.05); // Hafif büyütme
+    box-shadow: 0 variables.$spacing-unit * 2 variables.$spacing-unit * 4 rgba(var(--color-primary-rgb), 0.3);
+
+    &:hover {
+        transform: translateY(-8px) scale(1.05); // Daha belirgin hover
+    }
+    
+    .price-tag {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: variables.$spacing-unit * 2;
+        color: var(--color-primary);
+        text-align: center;
+    }
+    
+    .feature-list {
+        list-style: none;
+        padding: 0;
+        margin-bottom: variables.$spacing-unit * 2;
+        flex-grow: 1; 
+        text-align: center; /* <-- Liste metinlerini ortala */
+
+        li {
+            padding: variables.$spacing-unit 0;
+            border-bottom: 1px dashed var(--color-border);
+            &:last-child {
+                border-bottom: none; 
+            }
+        }
+    }
+}

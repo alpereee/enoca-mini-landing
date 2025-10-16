@@ -1,0 +1,43 @@
+@use '../../styles/variables';
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: variables.$spacing-unit * 4;
+    border: 1px solid var(--color-border);
+    border-radius: variables.$border-radius * 2;
+    background-color: var(--color-card-bg);
+
+    .input-group__textarea {
+        // Input stiline benzer stil
+        padding: variables.$spacing-unit * 1.5;
+        border: 1px solid var(--color-border);
+        border-radius: variables.$border-radius;
+        background-color: var(--color-card-bg);
+        color: var(--color-text);
+        resize: vertical; // Sadece dikey yeniden boyutlandırmaya izin ver
+        width: 100%;
+
+        &:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        &--error {
+            border-color: var(--color-error) !important;
+        }
+    }
+}
+
+.contact-form--success {
+    padding: variables.$spacing-unit * 5;
+    text-align: center;
+    border: 2px solid var(--color-primary);
+    border-radius: variables.$border-radius * 2;
+    background-color: rgba(var(--color-primary-rgb, 0, 123, 255), 0.1);
+
+    p {
+        font-size: 1.2rem;
+        margin-bottom: variables.$spacing-unit * 4;
+    }
+}

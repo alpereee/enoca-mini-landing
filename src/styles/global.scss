@@ -1,0 +1,39 @@
+@use 'variables'; // SCSS değişkenlerini kullanmak için
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+// Grid/Flex Temelleri (Responsive gereksinimi için)
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 variables.$spacing-unit * 2;
+
+  @include variables.screen-sm-max {
+    padding: 0 variables.$spacing-unit;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: variables.$spacing-unit * 4;
+
+  @include variables.screen-lg-min {
+    grid-template-columns: repeat(3, 1fr); // Örneğin 3 sütun
+  }
+
+  @include variables.screen-md {
+    grid-template-columns: repeat(2, 1fr); // Örneğin 2 sütun
+  }
+
+  @include variables.screen-sm-max {
+    grid-template-columns: 1fr;
+  }
+}

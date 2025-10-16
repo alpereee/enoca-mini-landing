@@ -1,0 +1,38 @@
+// src/styles/_variables.scss
+
+// 1. Breakpoint'ler (3 gereksinim için: <=640, 641-1024, >=1025)
+$breakpoint-sm: 640px;
+$breakpoint-md: 1024px;
+
+// 2. Temel Renkler (CSS Değişkenleri ile değiştirilecek)
+$color-primary: var(--color-primary, #0076a3);       // Derin Deniz Mavisi
+$color-secondary: var(--color-secondary, #6c757d);   // Orta Gri
+$color-background: var(--color-background, #f8f9fa);
+$color-text: var(--color-text, #212529);
+
+// 3. Genel SCSS Değişkenleri
+$spacing-unit: 8px; // Standart aralık birimi
+$border-radius: 4px; // Standart köşe yuvarlaklığı
+
+// 4. Mixin'ler (Responsive)
+
+// Mobil-Öncelikli (Mobile First) yaklaşımla 640px ve altı
+@mixin screen-sm-max {
+  @media (max-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+// Tablet (641px - 1024px)
+@mixin screen-md {
+  @media (min-width: #{ $breakpoint-sm + 1px }) and (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+// Masaüstü (1025px ve üstü)
+@mixin screen-lg-min {
+  @media (min-width: #{ $breakpoint-md + 1px }) {
+    @content;
+  }
+}
