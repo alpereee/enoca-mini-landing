@@ -1,73 +1,115 @@
-# React + TypeScript + Vite
+# 🚀 ENOCA Yazılım Çözümleri: Landing Page & Bileşen Kütüphanesi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bu proje, Enoca Yazılım Şirketi'nin kurumsal kimliğine uygun, teknik yeterliliği ve profesyonel süreçleri göstermek amacıyla hazırlanmış, **tek sayfalık bir ürün tanıtım sitesidir**. Proje, zorunlu sürede geliştirilmiştir.
 
-Currently, two official plugins are available:
+## 🎯 Proje Gereksinimleri ve Kabul Kriterleri Özeti
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+| Kriter | Durum | Uyum Durumu |
+| :--- | :--- | :--- |
+| **Teknoloji Yığını** | **Vite + React + TypeScript** | [cite_start]SCSS zorunlu olarak kullanılmıştır[cite: 1]. |
+| **Bileşen Kütüphanesi** | **5 Adet Tamamlandı** | [cite_start]Button, Input, Card, Modal, Accordion bileşenleri ayrı klasörlerde, props ile yapılandırılabilir durumdadır[cite: 1]. |
+| **Responsive Tasarım** | **Mobil-Öncelikli** | 3 farklı breakpoint'te (≤640, 641-1024, ≥1025) düzgün çalışır. |
+| **Tema** | **Light/Dark Toggle** | CSS değişkenleri (`--color-*`) ile yönetilen tema geçişi mevcuttur. |
+| **Form Doğrulama** | **Yalın TS Mantığı** | E-posta formatı ve boş alan kontrolü, harici kütüphane kullanılmadan sağlanmıştır. |
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Kurulum ve Çalıştırma
 
-## Expanding the ESLint configuration
+Projenin bağımlılıklarını kurmak ve yerel sunucuyu başlatmak için aşağıdaki adımları izleyin.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1.  **Depoyu Klonlayın:**
+    ```bash
+    git clone [https://github.com/alpereee/enoca-mini-landing](https://github.com/alpereee/enoca-mini-landing) 
+    cd mini-landing
+    ```
+2.  **Bağımlılıkları Kurun:**
+    ```bash
+    npm install 
+    npm install sass --save-dev
+    ```
+3.  **Geliştirme Sunucusunu Başlatın:**
+    ```bash
+    npm run dev
+    ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🌐 Canlı Demo ve Depo Bilgileri
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* **Canlı Demo Adresi:** [https://enoca-mini-landing.vercel.app/]
+* **GitHub Depo Adresi:** [https://github.com/alpereee/enoca-mini-landing](https://github.com/alpereee/enoca-mini-landing)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🧠 Mimari Kararlar ve Teknik Analiz
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Karar | Detaylı Açıklama | Neden |
+| :--- | :--- | :--- |
+| **SCSS Fonksiyon Çatışması** | `darken()` gibi Sass fonksiyonları, `var(...)` değerlerini renk olarak tanımadığı için, renk manipülasyonları **güvenli CSS yöntemleri** ile (Örn: `filter: brightness()`) yapılmıştır. | CSS değişkenleri ile Sass'ın uyumunu sağlamak için. |
+| **Header Sabitleme** | `position: fixed` ve `main { margin-top: ... }` | Header'ın sayfa kaydırılsa bile sabit kalması ve altındaki içeriğin Header'ın altında kalmaması için kullanılmıştır. |
+| **Erişilebilirlik (A11y)** | [cite_start]`Accordion` gibi bileşenlerde klavye ile gezinme ve temel `aria-*` nitelikleri kullanılmıştır[cite: 1]. | Zorunlu Kabul Kriterlerini karşılamak için. |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 🏆 Değerlendirme Puanları ve Kalite Raporu
+
+### 1. Lighthouse Performans Raporu (Teslim edilen skorlar)
+
+| Kategori | Elde Edilen Puan | Durum |
+| :--- | :--- | :--- |
+| **Performans** | **74** | Geliştirme alanı mevcuttur (Hedef 90+). |
+| **Erişilebilirlik** | **96** | Küçük düzeltme ile 100 hedefine yakındır. |
+| **Best Practices** | **100** | ✅ Mükemmel |
+| **SEO** | **91** | ✅ Başarılı |
+
+*Lighthouse raporunun ekran görüntüsü ("lighthouse-report-enoca.png") projenin ana dizinine eklenmiştir.*
+
+### 2. Kod Standartları ve Git Akışı
+
+* **Kod Standardı:** ESLint ve Prettier kullanılarak kod formatı otomatik olarak korunmuştur.
+* **Versiyon Kontrol:** Geliştirme `dev` dalında yapılmış, `feat/*` ve `fix/*` dalları kullanılmıştır. `main` dalı koruma altındadır.
+* **Commit Mesajları:** Conventional Commits formatına (`feat:`, `fix:`, `docs:`, vb.) uygun olarak yazılmıştır.
+
+## 🚀 Final Pull Request: ENOCA Landing Page Teslimat Raporu
+
+Bu PR, 'dev' dalındaki tüm geliştirme çalışmalarını, proje kurallarına uygun olarak 'main' dalına birleştirmek için açılmıştır.
+
+### ✅ Teslimat Kanıtları ve Uyum Raporu
+
+| Kriter | Durum | Not |
+| :--- | :--- | :--- |
+| **Canlı Demo** | ✅ Tamamlandı | [https://enoca-mini-landing.vercel.app/] |
+| **Lighthouse Görseli** | ✅ Eklendi | Proje ana dizininde ("lighthouse-report-enoca.png") bulunmaktadır. |
+| **Dökümantasyon** | ✅ Tamamlandı | README.md ve CHANGELOG.md güncellenmiştir. |
+| **Commit Standardı** | ✅ Uyumlu | Tüm commit'ler Conventional Commits (feat:, fix:, docs:) kuralına uyar. |
+
+### 🏆 Lighthouse Nihai Skorları
+
+| Kategori | Skor |
+| :--- | :--- |
+| **Performans** | **74** |
+| **Erişilebilirlik** | **96** |
+| **Best Practices** | **100** |
+| **SEO** | **91** |
+
+---
+
+### 📄 CHANGELOG.md (Önemli Değişiklikler)
+
+PR Kuralı gereği, bu bölümde `CHANGELOG.md` içeriği özetlenmiştir.
+
+```markdown
+## [1.0.0] - Final Teslimat
+
+### feat (Özellikler)
+- feat(release): Tüm zorunlu UI bileşenleri (5 adet) ve sayfa bölümleri tamamlandı.
+- feat(style): Light/Dark Mode toggle ve ENOCA renkleri uygulandı.
+- feat(layout): Sabit Header ve Scroll-to-Top butonu entegrasyonu.
+
+### fix (Hata Düzeltmeleri)
+- fix(layout): Sayfa ortalama (merkezleme) ve yatay kaydırma çubuğu sorunları giderildi.
+- fix(style): SCSS'teki değişken (var) ve Sass fonksiyon (darken) çatışmaları çözüldü.
+- fix(a11y): Lighthouse raporundaki temel erişilebilirlik hatalarına yönelik düzeltmeler yapıldı.
+
+### docs (Dokümantasyon)
+- docs: README.md ve CHANGELOG.md dosyaları güncellendi.
+- docs: Lighthouse raporu kanıt olarak eklendi.
